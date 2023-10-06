@@ -4,7 +4,7 @@ from weather import WeatherService
 from master import MasterService
 import os
 
-read_interval_seconds = 2
+read_interval_seconds = 60
 sense = SenseHat()
 
 green = (0, 255, 0)
