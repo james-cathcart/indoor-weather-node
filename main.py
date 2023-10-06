@@ -12,10 +12,11 @@ white = (255, 255, 255)
 
 master_host = os.getenv('MASTER_HOST')
 master_port = os.getenv('MASTER_PORT')
+location = os.getenv('WEATHER_LOCATION')
 
 def main():
    
-   weather_svc = WeatherService(sense, "office")
+   weather_svc = WeatherService(sense, location)
    master_svc = MasterService(master_host, master_port)
    print('starting weather node')
 
