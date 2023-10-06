@@ -17,10 +17,13 @@ location = os.getenv('WEATHER_LOCATION')
 def main():
 
     if master_host is None or master_host == '':
+        print('no MASTER_HOST value')
         exit(1)
     elif master_port is None or master_port == '':
+        print('no MASTER_PORT value')
         exit(2)
     elif location is None or location == '':
+        print('no WEATHER_LOCATION value')
         exit(3)
 
     weather_svc = WeatherService(sense, location)
