@@ -11,4 +11,4 @@ class MasterService:
         try:
             res = requests.post(self.master_url, json=data)
         except:
-            print('call to master server failed')
+            print('call to master server failed', res.text)
