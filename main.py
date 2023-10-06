@@ -1,9 +1,8 @@
-from sense_emu import SenseHat
+from sense_hat import SenseHat
 import time
 from weather import WeatherService
 from master import MasterService
 import os
-
 
 read_interval_seconds = 2
 sense = SenseHat()
