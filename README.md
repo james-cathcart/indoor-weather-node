@@ -27,7 +27,31 @@ python3 main.py
 ```
 
 ## Run as Service
-tbd
+Add the following to `/lib/systemd/system/weather-node.service`. Update the `MASTER_HOST` and `WEATHER_LOCATION` values to reflect your usage.
+```
+[Unit]
+Description=Weather Node for Indoor Weather application
+
+[Service]
+Type=simple
+Environment="MASTER_HOST=WEATHER_SERVER_HOST"
+Environment="MASTER_PORT=8080"
+Environment="WEATHER_LOCATION=NODE_LOCATION"
+
+ExecStart=python3 /path/to/main.py
+
+[Install]
+WantedBy=multi-user.target
+```
+### Enable Service on Boot
+```
+sudo systemctl enable weather-node.service
+```
+
+### Start Service
+```
+sudo systemctl start weather-node.service
+```
 
 # Development
 ## Architecture
