@@ -10,7 +10,6 @@ class WeatherService:
     def get_data(self):
 
         formatted_time = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        print(f'timestamp: {formatted_time}')
 
         humidity = round(self.sense.get_humidity(), None)
         pressure = self.sense.get_pressure()
