@@ -15,6 +15,6 @@ class WeatherService:
         pressure = self.sense.get_pressure()
         temperature = self.sense.get_temperature()
         
-        data = {"timestamp": formatted_time, "humidity": humidity, "temperature": temperature, "pressure": pressure, "location": self.location}
+        data = {"_timestamp": formatted_time, "humidity": humidity, "temperature": temperature, "pressure": pressure, "location": self.location}
         
         return data
