@@ -1,5 +1,5 @@
-import time
-import math
+from datetime import datetime
+
 
 class WeatherService:
     
@@ -9,7 +9,7 @@ class WeatherService:
 
     def get_data(self):
 
-        formatted_time = time.strftime('%Y-%m-%dT%H:%M:%SZ')
+        formatted_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 
         humidity = round(self.sense.get_humidity(), None)
         pressure = self.sense.get_pressure()
