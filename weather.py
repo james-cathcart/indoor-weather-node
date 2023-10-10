@@ -8,14 +8,13 @@ class WeatherService:
         self.location = location
 
     def get_data(self):
-        
-        raw_time = time.time()
-        current_time = round(raw_time, None)
+
+        formatted_time = time.strftime('%Y-%m-%dT%H:%M:%SZ')
 
         humidity = round(self.sense.get_humidity(), None)
         pressure = self.sense.get_pressure()
         temperature = self.sense.get_temperature()
         
-        data = {"time": current_time, "humidity": humidity, "temperature": temperature, "pressure": pressure, "location": self.location}
+        data = {"timestamp": formatted_time, "humidity": humidity, "temperature": temperature, "pressure": pressure, "location": self.location}
         
         return data
