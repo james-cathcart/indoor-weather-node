@@ -1,5 +1,6 @@
 import requests
 
+
 class MasterService:
 
     def __init__(self, host, port):
@@ -10,5 +11,6 @@ class MasterService:
     def record_data(self, data):
         try:
             res = requests.post(self.master_url, json=data)
-        except:
+        except Exception:
             print('call to master server failed', res.text)
+            pass
