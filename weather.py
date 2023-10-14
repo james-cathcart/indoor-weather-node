@@ -28,4 +28,6 @@ class WeatherService:
             "location": self.location
         }
 
+        print(f'collected data: {data}')
+
         return data
