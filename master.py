@@ -11,10 +11,14 @@ class MasterService:
 
     def record_data(self, data):
 
-        if self.log_level == 'verbose':
-            print(f"sending data: {data}")
+        print(f"sending data: {data}")
 
+        res = None
         try:
-            requests.post(self.master_url, json=data)
+            res = requests.post(self.master_url, json=data)
         except:
             pass
+
+        if res is not None:
+            print(res)
+
