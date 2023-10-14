@@ -19,7 +19,7 @@ def main():
     log_level = os.getenv('WEATHER_LOG_LEVEL')
 
     if log_level is None or log_level == '':
-        log_level = 'error'
+        log_level = 'verbose'
 
     if master_host is None or master_host == '':
         print('no MASTER_HOST value')
