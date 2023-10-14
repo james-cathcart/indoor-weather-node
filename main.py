@@ -10,11 +10,16 @@ sense = SenseHat()
 green = (0, 255, 0)
 white = (255, 255, 255)
 
-master_host = os.getenv('MASTER_HOST')
-master_port = os.getenv('MASTER_PORT')
-location = os.getenv('WEATHER_LOCATION')
 
 def main():
+
+    master_host = os.getenv('MASTER_HOST')
+    master_port = os.getenv('MASTER_PORT')
+    location = os.getenv('WEATHER_LOCATION')
+    log_level = os.getenv('WEATHER_LOG_LEVEL')
+
+    if log_level is None or log_level == '':
+        log_level = 'error'
 
     if master_host is None or master_host == '':
         print('no MASTER_HOST value')
@@ -27,7 +32,7 @@ def main():
         exit(3)
 
     weather_svc = WeatherService(sense, location)
-    master_svc = MasterService(master_host, master_port)
+    master_svc = MasterService(master_host, master_port, log_level)
     print('starting weather node')
 
     while True:
