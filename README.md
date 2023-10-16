@@ -59,3 +59,7 @@ sudo systemctl start weather-node.service
 
 ## Deployment
 ![](docs/deployment.png)
+
+# Kibana Dashboard Example
+This is an example of the kind of visual representation of the data that may prove interesting.
+![](docs/kibana-dashboard.png)
