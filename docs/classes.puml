@@ -1,12 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-skinparam {
-    backgroundColor #888
-    classBackgroundColor #Orange
-}
-
-class Main {
+interface Main {
     main()
 }
 
