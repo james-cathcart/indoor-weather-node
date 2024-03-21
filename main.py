@@ -16,7 +16,7 @@ def main():
     server_host = os.getenv('WEATHER_SERVER_HOST')
     server_port = os.getenv('WEATHER_SERVER_PORT')
     location = os.getenv('WEATHER_LOCATION')
-    level = os.getenv('WEATHER_FLOOR')
+    floor = os.getenv('WEATHER_FLOOR')
     cardinal_direction = os.getenv('CARDINAL_DIRECTION')
     log_level = os.getenv('WEATHER_LOG_LEVEL')
 
@@ -32,11 +32,11 @@ def main():
     elif location is None or location == '':
         print('no WEATHER_LOCATION value')
         exit(3)
-    elif level is None or level == '':
+    elif floor is None or floor == '':
         print('no WEATHER_FLOOR value')
         exit(4)
 
-    weather_svc = WeatherService(sense, location, cardinal_direction)
+    weather_svc = WeatherService(sense, location, cardinal_direction, floor)
     server_svc = ClientService(server_host, server_port, log_level)
     print('starting weather node')
 
