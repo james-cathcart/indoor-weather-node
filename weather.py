@@ -6,10 +6,11 @@ def convert_to_fahrenheit(celsius_temp):
 
 class WeatherService:
     
-    def __init__(self, sense_hat, location, cardinal_direction):
+    def __init__(self, sense_hat, location, cardinal_direction, floor):
         self.sense = sense_hat
         self.location = location
         self.cardinal_direction = cardinal_direction
+        self.floor = floor
 
     def get_data(self):
 
@@ -21,12 +22,13 @@ class WeatherService:
         
         data = {
             "_timestamp": formatted_time,
-            "cardinal_direction": self.cardinal_direction,
             "humidity": humidity,
             "temperature": temperature,
             "temperature_f": convert_to_fahrenheit(temperature),
             "pressure": pressure,
-            "location": self.location
+            "location": self.location,
+            "cardinal_direction": self.cardinal_direction,
+            "floor": self.floor
         }
 
         print(f'collected data: {data}')
