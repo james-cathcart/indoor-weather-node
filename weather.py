@@ -1,15 +1,15 @@
 from datetime import datetime
 
-
 def convert_to_fahrenheit(celsius_temp):
     return (celsius_temp * (9/5)) + 32
 
 
 class WeatherService:
     
-    def __init__(self, sense_hat, location):
+    def __init__(self, sense_hat, location, cardinal_direction):
         self.sense = sense_hat
         self.location = location
+        self.cardinal_direction = cardinal_direction
 
     def get_data(self):
 
@@ -21,6 +21,7 @@ class WeatherService:
         
         data = {
             "_timestamp": formatted_time,
+            "cardinal_direction": self.cardinal_direction,
             "humidity": humidity,
             "temperature": temperature,
             "temperature_f": convert_to_fahrenheit(temperature),
