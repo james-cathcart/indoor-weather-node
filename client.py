@@ -1,12 +1,12 @@
 import requests
 
 
-class MasterService:
+class ClientService:
 
     def __init__(self, host, port, log_level):
-        self.master_host = host
-        self.master_port = port
-        self.master_url = f'http://{self.master_host}:{self.master_port}/ingest/weather'
+        self.server_host = host
+        self.server_port = port
+        self.server_url = f'http://{self.server_host}:{self.server_port}/ingest/weather'
         self.log_level = log_level
 
     def record_data(self, data):
@@ -15,7 +15,7 @@ class MasterService:
 
         res = None
         try:
-            res = requests.post(self.master_url, json=data)
+            res = requests.post(self.server_url, json=data)
         except:
             pass
 

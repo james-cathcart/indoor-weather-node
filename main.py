@@ -1,7 +1,7 @@
 from sense_hat import SenseHat
 import time
 from weather import WeatherService
-from master import MasterService
+from client import ClientService
 import os
 
 read_interval_seconds = 60
@@ -13,31 +13,32 @@ white = (255, 255, 255)
 
 def main():
 
-    master_host = os.getenv('MASTER_HOST')
-    master_port = os.getenv('MASTER_PORT')
+    server_host = os.getenv('WEATHER_SERVER_HOST')
+    server_port = os.getenv('WEATHER_SERVER_PORT')
     location = os.getenv('WEATHER_LOCATION')
+    cardinal_direction = os.getenv('CARDINAL_DIRECTION')
     log_level = os.getenv('WEATHER_LOG_LEVEL')
 
     if log_level is None or log_level == '':
         log_level = 'verbose'
 
-    if master_host is None or master_host == '':
-        print('no MASTER_HOST value')
+    if server_host is None or server_host == '':
+        print('no WEATHER_SERVER_HOST value')
         exit(1)
-    elif master_port is None or master_port == '':
-        print('no MASTER_PORT value')
+    elif server_port is None or server_port == '':
+        print('no WEATHER_SERVER_PORT value')
         exit(2)
     elif location is None or location == '':
         print('no WEATHER_LOCATION value')
         exit(3)
 
-    weather_svc = WeatherService(sense, location)
-    master_svc = MasterService(master_host, master_port, log_level)
+    weather_svc = WeatherService(sense, location, cardinal_direction)
+    server_svc = ClientService(server_host, server_port, log_level)
     print('starting weather node')
 
     while True:
         data = weather_svc.get_data()
-        master_svc.record_data(data)
+        server_svc.record_data(data)
         time.sleep(read_interval_seconds)
 
 
