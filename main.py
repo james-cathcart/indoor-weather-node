@@ -35,6 +35,9 @@ def main():
     elif floor is None or floor == '':
         print('no WEATHER_FLOOR value')
         exit(4)
+    elif cardinal_direction is None or cardinal_direction == '':
+        print('no CARDINAL_DIRECTION value')
+        exit(5)
 
     weather_svc = WeatherService(sense, location, cardinal_direction, floor)
     server_svc = ClientService(server_host, server_port, log_level)
