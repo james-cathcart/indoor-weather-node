@@ -4,7 +4,7 @@ from weather import WeatherService
 from client import ClientService
 import os
 
-read_interval_seconds = 60
+read_interval_seconds = 900
 sense = SenseHat()
 
 green = (0, 255, 0)
